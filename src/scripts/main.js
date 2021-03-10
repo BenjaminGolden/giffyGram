@@ -2,10 +2,11 @@ import { getPosts, getUsers } from "./data/DataManager.js"
 import { PostList } from "./feed/PostList.js"
 import { NavBar } from "./nav/NavBar.js"
 import { Footer } from "./nav/Footer.js"
+import { usePostCollection } from "./data/DataManager.js"
 
  const showPostList = () => {
     const postElement = document.querySelector(".postList");
-      getPosts().then((allPosts) => {
+      getPosts().then((allPosts) => {//when i get allPosts I can create the list
           postElement.innerHTML = PostList(allPosts);
       })
   }
@@ -23,14 +24,6 @@ applicationElement.addEventListener("click", event => {
 	}
 })
 
-applicationElement.addEventListener("change", event => {
-    if (event.target.id === "yearSelection") {
-      const yearAsNumber = parseInt(event.target.value)
-  
-      console.log(`User wants to see posts since ${yearAsNumber}`)
-    }
-  })
-
 
 applicationElement.addEventListener("click", event => {
     if(event.target.id === "directMessageIcon"){
@@ -43,6 +36,26 @@ applicationElement.addEventListener("click", event => {
         console.log("peanut butter jelly time!")
     }
 })
+
+applicationElement.addEventListener("change", event => {
+    if(event.target.id === "yearSelection"){
+        const yearAsNumber = parseInt(event.target.value)
+        console.log(`user wants to see posts since ${yearAsNumber}`)
+        showFilteredPosts(yearAsNumber);
+    }
+})
+
+const showFilteredPosts = (year) => {
+    const epoch = Date.parse(`01/01/${year}`);
+    //filter the data
+    const filteredData = usePostCollection().filter(singlePost => {
+        if (singlePost.timestamp >= epoch) {
+            return singlePost
+        }
+    })
+    const postElement = document.querySelector(".postList");
+    postElement.innerHTML = PostList(filteredData);
+}
 
 applicationElement.addEventListener("click", (event) => {
 	
