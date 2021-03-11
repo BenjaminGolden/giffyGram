@@ -38,14 +38,46 @@
       "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
       "timestamp": 1561695022812,
       "title": "Enhanced global utilisation"
+    },
+    {
+      "title": "hello",
+      "imageURL": "https://media.giphy.com/media/3orif7mZcicfHOiE1O/giphy.gif",
+      "description": "look at this!",
+      "userId": 1,
+      "timestamp": 1615477859169,
+      "id": 3
+    },
+    {
+      "title": "3rd try",
+      "imageURL": "https://media.giphy.com/media/l2Je864sR1iuEV8sw/giphy.gif",
+      "description": "not seeing the post yet",
+      "userId": 1,
+      "timestamp": 1615478071456,
+      "id": 4
+    },
+    {
+      "title": "Ron Burgandy",
+      "imageURL": "https://media.giphy.com/media/I5xVnGJRHZZf2/giphy.gif",
+      "description": "smoke it, Ron!",
+      "userId": 1,
+      "timestamp": 1615480943972,
+      "id": 5
+    },
+    {
+      "title": "Dog on the couch",
+      "imageURL": "https://media.giphy.com/media/3o85xCVh0TmBrQr36U/giphy.gif",
+      "description": "bulldog watching tv!",
+      "userId": 1,
+      "timestamp": 1615481041280,
+      "id": 6
     }
   ],
   "messages": [],
   "likes": [
     {
-        "id": 1,
-        "userId": 1,
-        "postId": 2
+      "id": 1,
+      "userId": 1,
+      "postId": 2
     }
-]
+  ]
 }
