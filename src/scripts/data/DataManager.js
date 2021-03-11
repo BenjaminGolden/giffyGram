@@ -13,7 +13,8 @@ const loggedInUser = {
 }
 
 export const getLoggedInUser = () => {
-    return loggedInUser;
+    return {...loggedInUser};
+
 }
 
 let postCollection = [];//current state of post in our app. it should only be modified by using getPosts, 
@@ -33,6 +34,18 @@ export const getPosts = () => {
       postCollection = parsedResponse//postCollection should = what we get back from the database (parsedResponse)
       return parsedResponse;//return the data to who called it
     })
+}
+
+export const createPost = postObj => {
+  return fetch("http://localhost:8088/posts", {//fetch takes two arguments.
+      method: "POST",//these are the details we want to return from the fetch. we are posting and not using the default of get.
+      headers: {//this is of the type of json, so that when this call comes in from the database it konws what to do with it. 
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postObj)// is the object that we are sending to the database. 
+                                    //adding "" marks around everything so it can be read by the database
+  })
+      .then(response => response.json())
 }
 
 // export const getPosts = () => {
