@@ -14,33 +14,29 @@
       "name": "Joe",
       "email": "Joe@joe.com",
       "id": 3
+    },
+    {
+      "name": "b.j. golden",
+      "email": "me@me.com",
+      "id": 4
+    },
+    {
+      "name": "shittie",
+      "email": "shittiecat@shittie.com",
+      "id": 5
     }
   ],
   "posts": [
     {
       "id": 2,
       "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
-      "userId": 6,
+      "userId": 1,
       "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
       "timestamp": 1615396921365,
       "title": "Enhanced global utilisation"
     },
     {
-      "imageURL": "https://media.giphy.com/media/3orif7mZcicfHOiE1O/giphy.gif",
-      "userId": 6,
-      "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-      "timestamp": 1561695022812,
-      "title": "Enhanced global utilisation"
-    },
-    {
-      "imageURL": "https://media.giphy.com/media/Ze4BXdrjDjygM9Piq0/giphy.gif",
-      "userId": 6,
-      "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-      "timestamp": 1561695022812,
-      "title": "Enhanced global utilisation"
-    },
-    {
-      "title": "hello",
+      "title": "Hi, Homer!",
       "imageURL": "https://media.giphy.com/media/3orif7mZcicfHOiE1O/giphy.gif",
       "description": "look at this!",
       "userId": 1,
@@ -48,36 +44,81 @@
       "id": 3
     },
     {
-      "title": "3rd try",
-      "imageURL": "https://media.giphy.com/media/l2Je864sR1iuEV8sw/giphy.gif",
-      "description": "not seeing the post yet",
-      "userId": 1,
-      "timestamp": 1615478071456,
-      "id": 4
-    },
-    {
-      "title": "Ron Burgandy",
-      "imageURL": "https://media.giphy.com/media/I5xVnGJRHZZf2/giphy.gif",
-      "description": "smoke it, Ron!",
-      "userId": 1,
-      "timestamp": 1615480943972,
-      "id": 5
-    },
-    {
-      "title": "Dog on the couch",
+      "title": "Look at this Dog sitting on the couch!",
       "imageURL": "https://media.giphy.com/media/3o85xCVh0TmBrQr36U/giphy.gif",
-      "description": "bulldog watching tv!",
+      "description": "bulldog with funky lip watching tv!",
       "userId": 1,
       "timestamp": 1615481041280,
       "id": 6
+    },
+    {
+      "title": "filing my nails",
+      "imageURL": "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
+      "description": "check meowt",
+      "userId": 5,
+      "timestamp": 1616604527064,
+      "id": 7
+    },
+    {
+      "title": "rockstar",
+      "imageURL": "https://media.giphy.com/media/RhrAmVUHxjTQvEPBWi/giphy.gif",
+      "description": "at rehearsal\n",
+      "userId": 5,
+      "timestamp": 1616610299160,
+      "id": 8
     }
   ],
   "messages": [],
-  "likes": [
+  "userLikes": [
     {
-      "id": 1,
+      "postId": "6",
       "userId": 1,
-      "postId": 2
+      "id": 1
+    },
+    {
+      "postId": "7",
+      "userId": 5,
+      "id": 2
+    },
+    {
+      "postId": "7",
+      "userId": 5,
+      "id": 3
+    },
+    {
+      "postId": "3",
+      "userId": 5,
+      "id": 4
+    },
+    {
+      "postId": "8",
+      "userId": 5,
+      "id": 5
+    },
+    {
+      "postId": "8",
+      "userId": 5,
+      "id": 6
+    },
+    {
+      "postId": "8",
+      "userId": 5,
+      "id": 7
+    },
+    {
+      "postId": "7",
+      "userId": 5,
+      "id": 8
+    },
+    {
+      "postId": "2",
+      "userId": 5,
+      "id": 9
+    },
+    {
+      "postId": "3",
+      "userId": 5,
+      "id": 10
     }
   ]
 }
