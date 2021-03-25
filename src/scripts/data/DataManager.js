@@ -6,15 +6,51 @@ export const getUsers = () => {
 
 
 
-const loggedInUser = {
-    id: 1,
-    name: "Bryan",
-    email: "bryan@bn.com"
+let loggedInUser = {}
+
+export const setLoggedInUser = (userObj) => {
+  console.log(userObj);
+  loggedInUser = userObj;
 }
 
 export const getLoggedInUser = () => {
     return {...loggedInUser};
 
+}
+
+export const logoutUser = () => {
+  loggedInUser = {}
+}
+
+export const loginUser = (userObj) => {
+  return fetch(`http://localhost:8088/users?name=${userObj.name}&email=${userObj.email}`)
+  .then(response => response.json())
+  .then(parsedUser => {
+    //is there a user?
+    console.log("parsedUser", parsedUser) //data is returned as an array
+    if (parsedUser.length > 0){
+      setLoggedInUser(parsedUser[0]);
+      return getLoggedInUser();
+    }else {
+      //no user
+      return false;
+    }
+  })
+}
+
+export const registerUser = (userObj) => {
+  return fetch(`http://localhost:8088/users`, {
+    method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userObj)
+  })
+  .then(response => response.json())
+  .then(parsedUser => {
+    setLoggedInUser(parsedUser);
+    return getLoggedInUser();
+  })
 }
 
 let postCollection = [];//current state of post in our app. it should only be modified by using getPosts, 
@@ -27,12 +63,22 @@ export const usePostCollection = () => {
   return [...postCollection];//...(spread operator) for every single item in the array, make a new array and return the data.   
 }
 
+// export const getPosts = () => {
+//   return fetch("http://localhost:8088/posts")
+//     .then(response => response.json())
+//     .then(parsedResponse => {
+//       postCollection = parsedResponse//postCollection should = what we get back from the database (parsedResponse)
+//       return parsedResponse;//return the data to who called it
+//     })
+// }
+
 export const getPosts = () => {
-  return fetch("http://localhost:8088/posts")
+  // const userId = getLoggedInUser().id
+  return fetch(`http://localhost:8088/posts?_expand=user`)
     .then(response => response.json())
     .then(parsedResponse => {
-      postCollection = parsedResponse//postCollection should = what we get back from the database (parsedResponse)
-      return parsedResponse;//return the data to who called it
+      postCollection = parsedResponse
+      return parsedResponse;
     })
 }
 
@@ -48,10 +94,55 @@ export const createPost = postObj => {
       .then(response => response.json())
 }
 
-// export const getPosts = () => {
-//     return fetch("http://localhost:8088/posts")
-//     .then(response => response.json()) //if all we want is to get the data we don't need the parsedResponse. 
-//     // .then(parsedResponse => {
-//     //     // do something with response here
-//     //     return parsedResponse;
-// }
+export const deletePost = postId => {
+  return fetch(`http://localhost:8088/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+          "Content-Type": "application/json"
+      }
+
+  })
+      .then(response => response.json())
+      .then(getPosts)
+}
+
+export const getSinglePost = (postId) => {
+  return fetch(`http://localhost:8088/posts/${postId}`)
+    .then(response => response.json())
+}
+
+export const getPostsFromCurrentUser = (userId) => {
+  return fetch(`http://localhost:8088/posts?userId=${userId}&_expand=user`)
+    .then(response => response.json())
+    
+}
+
+export const updatePost = postObj => {
+  return fetch(`http://localhost:8088/posts/${postObj.id}`, {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(postObj)
+
+  })
+      .then(response => response.json())
+      .then(getPosts)
+}
+
+export const getLikes = (postId) => {
+  return fetch(`http://localhost:8088/userLikes?postId=${postId}`)
+    .then(response => response.json())
+}
+
+export const postLike = likeObject => {
+  return fetch(`http://localhost:8088/userLikes/`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(likeObject)
+  })
+      .then(response => response.json())
+      .then(getPosts)
+}
